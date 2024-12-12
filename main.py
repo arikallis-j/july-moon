@@ -10,9 +10,8 @@ with open("keys/api.key") as f:
 ComandList = """
 /help - справка по командам
 /start - перезапуск бота
-/time - координаты точного времени
+/stime - координаты звёздного времени
 """
-
 
 bot = MyBot(API_TOKEN, ComandList)
 
