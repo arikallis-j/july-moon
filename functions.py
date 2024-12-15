@@ -1,3 +1,6 @@
+from constants import *
+
+import feedparser
 import time
 
 def current_sidereal_time():
@@ -16,3 +19,17 @@ def current_sidereal_time():
     seconds = int((((sidereal_time % 15) * 4) % 1) * 60)
     
     return f"{hours:02}:{minutes:02}:{seconds:02}"
+
+
+def get_arxiv_articles():
+    """Получает список статей из RSS-ленты arXiv."""
+    feed = feedparser.parse(ARXIV_RSS_URL)
+    articles = []
+
+    for entry in feed.entries:
+        title = entry.title
+        link = entry.link
+        published = entry.published
+        articles.append(f"\u25B6 <b>{title}</b>\nОпубликовано: {published}\nСсылка: {link}")
+
+    return articles
